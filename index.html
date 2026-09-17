@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Legends Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #101b3d, #172c68);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px #0008;
+        }
+
+        header h1 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #ffd700;
+            color: #111;
+        }
+
+        section {
+            padding: 55px 8%;
+            min-height: 300px;
+        }
+
+        .hero-home {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                linear-gradient(#07102ddd, #07102ddd),
+                radial-gradient(circle at center, #3158c9, #070b18);
+        }
+
+        .hero-home h2 {
+            font-size: 45px;
+            color: #ffd700;
+        }
+
+        .hero-home p {
+            max-width: 700px;
+            margin: 15px auto;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffd700;
+            color: #111;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #ffb700;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #151d35;
+            border: 1px solid #29365e;
+            border-radius: 15px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+        }
+
+        .card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .hero-img {
+            height: 140px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #263d8f, #612a8f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .role {
+            text-align: center;
+        }
+
+        .role-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #151d35;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            border: 1px solid #303b60;
+            text-align: left;
+        }
+
+        th {
+            background: #1e326b;
+            color: #ffd700;
+        }
+
+        tr:hover {
+            background: #1d2745;
+        }
+
+        .tips {
+            counter-reset: tip;
+        }
+
+        .tip {
+            margin-bottom: 15px;
+            padding: 18px;
+            background: #151d35;
+            border-left: 5px solid #ffd700;
+            border-radius: 8px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 180px;
+            background: linear-gradient(
+                135deg,
+                #1e3a8a,
+                #7c3aed,
+                #db2777
+            );
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.04);
+        }
+
+        form {
+            max-width: 700px;
+            margin: auto;
+            background: #151d35;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #ffd700;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #344268;
+            border-radius: 8px;
+            background: #0b1020;
+            color: white;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #ffd700;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #ffd700;
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ffb700;
+        }
+
+        footer {
+            background: #070b16;
+            text-align: center;
+            padding: 30px;
+            color: #aaa;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #263b78;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+        }
+
+        .notice {
+            background: #202d51;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffd700;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                position: static;
+            }
+
+            .hero-home h2 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>⚔️ Mobile Legends Hub</h1>
+
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#hero">Hero</a>
+            <a href="#role">Role</a>
+            <a href="#item">Item</a>
+            <a href="#emblem">Emblem</a>
+            <a href="#tips">Tips</a>
+            <a href="#turnamen">Turnamen</a>
+            <a href="#galeri">Galeri</a>
+            <a href="#komentar">Komentar</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- BERANDA -->
+        <section id="beranda" class="hero-home">
+            <div>
+                <h2>Mobile Legends Hub</h2>
+
+                <p>
+                    Website informasi dan panduan sederhana untuk pemain
+                    Mobile Legends. Temukan hero, role, item, emblem,
+                    tips bermain, jadwal turnamen, dan galeri.
+                </p>
+
+                <a href="#hero" class="btn">
+                    Jelajahi Hero
+                </a>
+            </div>
+        </section>
+
+        <!-- DAFTAR HERO -->
+        <section id="hero">
+            <h2 class="section-title">⚔️ Daftar Hero</h2>
+
+            <div class="notice">
+                Pilih hero sesuai gaya bermain dan kebutuhan komposisi tim.
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="hero-img">⚔️</div>
+                    <h3>Alucard</h3>
+                    <p>
+                        Fighter yang memiliki kemampuan lifesteal
+                        dan kuat dalam pertarungan jarak dekat.
+                    </p>
+                    <span class="badge">Fighter</span>
+                </div>
+
+                <div class="card">
+                    <div class="hero-img">🔥</div>
+                    <h3>Vale</h3>
+                    <p>
+                        Mage yang mampu memberikan damage area
+                        besar dalam team fight.
+                    </p>
+                    <span class="badge">Mage</span>
+                </div>
+
+                <div class="card">
+                    <div class="hero-img">🏹</div>
+                    <h3>Miya</h3>
+                    <p>
+                        Marksman yang mengandalkan serangan jarak jauh
+                        dan attack speed.
+                    </p>
+                    <span class="badge">Marksman</span>
+                </div>
+
+                <div class="card">
+                    <div class="hero-img">🛡️</div>
+                    <h3>Tigreal</h3>
+                    <p>
+                        Tank yang dapat membantu membuka team fight
+                        dan melindungi anggota tim.
+                    </p>
+                    <span class="badge">Tank</span>
+                </div>
+
+                <div class="card">
+                    <div class="hero-img">🗡️</div>
+                    <h3>Saber</h3>
+                    <p>
+                        Assassin dengan kemampuan burst damage
+                        terhadap target tertentu.
+                    </p>
+                    <span class="badge">Assassin</span>
+                </div>
+
+                <div class="card">
+                    <div class="hero-img">💚</div>
+                    <h3>Rafaela</h3>
+                    <p>
+                        Support yang dapat membantu tim dengan
+                        healing dan peningkatan mobilitas.
+                    </p>
+                    <span class="badge">Support</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ROLE -->
+        <section id="role">
+            <h2 class="section-title">🎯 Role Hero</h2>
+
+            <div class="cards">
+
+                <div class="card role">
+                    <div class="role-icon">🛡️</div>
+                    <h3>Tank</h3>
+                    <p>
+                        Memiliki pertahanan tinggi dan bertugas
+                        melindungi rekan satu tim.
+                    </p>
+                </div>
+
+                <div class="card role">
+                    <div class="role-icon">⚔️</div>
+                    <h3>Fighter</h3>
+                    <p>
+                        Hero yang seimbang antara serangan
+                        dan kemampuan bertahan.
+                    </p>
+                </div>
+
+                <div class="card role">
+                    <div class="role-icon">🗡️</div>
+                    <h3>Assassin</h3>
+                    <p>
+                        Cocok untuk menyerang hero lawan
+                        dengan HP rendah atau target penting.
+                    </p>
+                </div>
+
+                <div class="card role">
+                    <div class="role-icon">🔥</div>
+                    <h3>Mage</h3>
+                    <p>
+                        Menggunakan kemampuan magic untuk
+                        memberikan damage dan crowd control.
+                    </p>
+                </div>
+
+                <div class="card role">
+                    <div class="role-icon">🏹</div>
+                    <h3>Marksman</h3>
+                    <p>
+                        Mengandalkan serangan jarak jauh
+                        dan damage secara konsisten.
+                    </p>
+                </div>
+
+                <div class="card role">
+                    <div class="role-icon">💚</div>
+                    <h3>Support</h3>
+                    <p>
+                        Membantu tim melalui healing,
+                        buff, crowd control, atau utilitas.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ITEM -->
+        <section id="item">
+            <h2 class="section-title">🛒 Item</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Blade of Despair</h3>
+                    <p>
+                        Item ofensif yang digunakan untuk meningkatkan
+                        physical attack.
+                    </p>
+                    <span class="badge">Physical</span>
+                </div>
+
+                <div class="card">
+                    <h3>Magic Shoes</h3>
+                    <p>
+                        Sepatu yang membantu mengurangi cooldown
+                        skill hero.
+                    </p>
+                    <span class="badge">Movement</span>
+                </div>
+
+                <div class="card">
+                    <h3>Holy Crystal</h3>
+                    <p>
+                        Item magic yang meningkatkan kekuatan
+                        serangan magic.
+                    </p>
+                    <span class="badge">Magic</span>
+                </div>
+
+                <div class="card">
+                    <h3>Immortality</h3>
+                    <p>
+                        Item defensif yang memberikan kesempatan
+                        untuk hidup kembali setelah tereliminasi.
+                    </p>
+                    <span class="badge">Defense</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EMBLEM -->
+        <section id="emblem">
+            <h2 class="section-title">🔰 Emblem</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Tank Emblem</h3>
+                    <p>
+                        Cocok digunakan oleh hero yang berada
+                        di garis depan dan membutuhkan durability.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Assassin Emblem</h3>
+                    <p>
+                        Dapat digunakan untuk mendukung gaya bermain
+                        assassin yang membutuhkan damage dan mobilitas.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Mage Emblem</h3>
+                    <p>
+                        Dirancang untuk mendukung hero magic
+                        dalam memberikan damage.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Support Emblem</h3>
+                    <p>
+                        Membantu hero support dalam memberikan
+                        utilitas kepada tim.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TIPS -->
+        <section id="tips">
+            <h2 class="section-title">💡 Tips Bermain</h2>
+
+            <div class="tips">
+
+                <div class="tip">
+                    <h3>1. Perhatikan Map</h3>
+                    <p>
+                        Selalu perhatikan minimap untuk mengetahui
+                        posisi teman dan lawan.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>2. Jangan Terlalu Agresif</h3>
+                    <p>
+                        Hindari mengejar lawan terlalu jauh jika
+                        posisi musuh lain tidak diketahui.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>3. Fokus Objektif</h3>
+                    <p>
+                        Turret dan objektif map memiliki peran penting
+                        dalam menentukan jalannya pertandingan.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>4. Komunikasi</h3>
+                    <p>
+                        Gunakan fitur komunikasi untuk memberi informasi
+                        kepada anggota tim.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>5. Pelajari Hero</h3>
+                    <p>
+                        Pahami skill, combo, kelemahan, dan item yang
+                        cocok untuk hero yang kamu gunakan.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TURNAMEN -->
+        <section id="turnamen">
+            <h2 class="section-title">🏆 Jadwal Turnamen</h2>
+
+            <div class="notice">
+                Contoh jadwal turnamen. Silakan sesuaikan dengan
+                jadwal kompetisi terbaru yang ingin ditampilkan.
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Turnamen</th>
+                        <th>Pertandingan</th>
+                        <th>Waktu</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>12 Oktober</td>
+                        <td>MLBB Championship</td>
+                        <td>Team Alpha vs Team Beta</td>
+                        <td>15:00 WIB</td>
+                    </tr>
+
+                    <tr>
+                        <td>13 Oktober</td>
+                        <td>MLBB Championship</td>
+                        <td>Team Gamma vs Team Delta</td>
+                        <td>18:00 WIB</td>
+                    </tr>
+
+                    <tr>
+                        <td>19 Oktober</td>
+                        <td>Community Cup</td>
+                        <td>Final</td>
+                        <td>19:30 WIB</td>
+                    </tr>
+
+                    <tr>
+                        <td>25 Oktober</td>
+                        <td>Campus Tournament</td>
+                        <td>Grand Final</td>
+                        <td>16:00 WIB</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- GALERI -->
+        <section id="galeri">
+            <h2 class="section-title">🖼️ Galeri</h2>
+
+            <div class="gallery">
+
+                <div class="gallery-item">⚔️</div>
+                <div class="gallery-item">🏆</div>
+                <div class="gallery-item">🔥</div>
+                <div class="gallery-item">🛡️</div>
+                <div class="gallery-item">🎮</div>
+                <div class="gallery-item">👑</div>
+                <div class="gallery-item">💎</div>
+                <div class="gallery-item">🌟</div>
+
+            </div>
+        </section>
+
+        <!-- KOMENTAR -->
+        <section id="komentar">
+            <h2 class="section-title">💬 Form Komentar</h2>
+
+            <form id="commentForm">
+
+                <label for="nama">
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama kamu"
+                    required
+                >
+
+                <label for="rolePilihan">
+                    Role Favorit
+                </label>
+
+                <select id="rolePilihan" name="role">
+                    <option value="Tank">Tank</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Assassin">Assassin</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Marksman">Marksman</option>
+                    <option value="Support">Support</option>
+                </select>
+
+                <label for="komentar">
+                    Komentar
+                </label>
+
+                <textarea
+                    id="komentar"
+                    name="komentar"
+                    placeholder="Tulis komentar kamu..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Kirim Komentar
+                </button>
+
+            </form>
+
+            <div id="hasilKomentar" class="cards"
+                 style="margin-top:25px;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            © 2026 Mobile Legends Hub
+        </p>
+
+        <p>
+            Website fan-made untuk latihan HTML, CSS, dan JavaScript.
+        </p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("commentForm");
+        const hasil = document.getElementById("hasilKomentar");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById("nama").value;
+            const role = document.getElementById("rolePilihan").value;
+            const komentar =
+                document.getElementById("komentar").value;
+
+            const card = document.createElement("div");
+
+            card.className = "card";
+
+            card.innerHTML = `
+                <h3>${nama}</h3>
+                <span class="badge">${role}</span>
+                <p style="margin-top:10px;">
+                    ${komentar}
+                </p>
+            `;
+
+            hasil.prepend(card);
+
+            form.reset();
+
+            alert("Komentar berhasil dikirim!");
+        });
+    </script>
+
+</body>
+</html>
+
+ 
